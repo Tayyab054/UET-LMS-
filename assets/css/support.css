@@ -1,0 +1,54 @@
+/* ==========================================================================
+   UET LMS — support.css
+   Contact & support ticket forms.
+   ========================================================================== */
+
+.support_ticket_form,
+section[id*="contact"] form,
+.s_website_form {
+  padding: 20px !important;
+  background: var(--uet-surface) !important;
+  border: 1px solid var(--uet-border);
+  border-radius: var(--uet-radius-lg) !important;
+  box-shadow: var(--uet-shadow-soft) !important;
+}
+
+.support_ticket_form label,
+.s_website_form label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--uet-primary);
+}
+
+.support_ticket_form .form-control,
+.s_website_form .form-control,
+.support_ticket_form select,
+.support_ticket_form textarea {
+  min-height: 48px;
+  font-size: 16px;
+  border: 1.5px solid #cfd8e3;
+  border-radius: var(--uet-radius-md);
+}
+
+.support_ticket_form textarea,
+.s_website_form textarea { min-height: 130px; }
+
+.support_ticket_form .form-control:focus,
+.s_website_form .form-control:focus {
+  border-color: var(--uet-primary);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, .18);
+}
+
+.support_ticket_form .btn-primary,
+.s_website_form .btn-primary {
+  min-height: 50px;
+  font-weight: 600;
+  border-radius: var(--uet-radius-md);
+}
+
+@media (max-width: 575.98px) {
+  .support_ticket_form .btn-primary,
+  .s_website_form .btn-primary { width: 100%; }
+}

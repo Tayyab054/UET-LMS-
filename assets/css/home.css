@@ -1,0 +1,129 @@
+/* ==========================================================================
+   UET LMS — home.css
+   Portal home cards + hero banner.
+   ========================================================================== */
+
+/* Portal home */
+.o_portal_my_home { padding: 12px 0 !important; }
+
+.o_portal_docs .list-group-item,
+.o_portal_docs_page .list-group-item,
+.o_portal_index_card a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  margin-bottom: 12px !important;
+  padding: 16px !important;
+  color: var(--uet-text);
+  background: var(--uet-surface);
+  border: 1px solid var(--uet-border) !important;
+  border-radius: var(--uet-radius-lg) !important;
+  box-shadow: var(--uet-shadow-soft);
+  transition: transform var(--uet-speed) var(--uet-ease),
+              box-shadow var(--uet-speed) var(--uet-ease);
+}
+
+.o_portal_docs .list-group-item:active,
+.o_portal_docs_page .list-group-item:active {
+  background: var(--uet-primary-tint);
+}
+
+/* Lift effect only on devices that can hover (avoids "stuck" hover on touch) */
+@media (hover: hover) {
+  .o_portal_docs .list-group-item:hover,
+  .o_portal_docs_page .list-group-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--uet-shadow-lift);
+  }
+}
+
+.o_portal_docs .badge,
+.o_portal_docs_page .badge {
+  padding: 6px 10px;
+  font-weight: 600;
+  color: var(--uet-primary);
+  background: var(--uet-primary-tint) !important;
+  border-radius: 999px;
+}
+
+/* Hero banner — add class "lms-hero" (or use .hero / #hero / .jumbotron) */
+@media (max-width: 767.98px) {
+
+  .lms-hero, .hero, #hero, .jumbotron {
+    position: relative;
+    margin: 0 var(--uet-gap) var(--uet-gap) !important;
+    padding: 28px 20px 24px !important;
+    overflow: hidden;
+    color: #fff;
+    background-color: var(--uet-primary) !important;
+    background-image: linear-gradient(160deg, #0a4a8a 0%, var(--uet-primary) 55%, var(--uet-primary-deep) 100%) !important;
+    border: 0 !important;
+    border-radius: var(--uet-radius-xl) !important;
+    box-shadow: 0 10px 28px rgba(0, 43, 92, .28);
+  }
+
+  .lms-hero::after, .hero::after, #hero::after, .jumbotron::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, .07);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .lms-hero > *, .hero > *, #hero > *, .jumbotron > * { position: relative; z-index: 1; }
+
+  .lms-hero h1, .hero h1, #hero h1, .jumbotron h1,
+  .lms-hero h2, .hero h2, #hero h2, .jumbotron h2 {
+    margin: 0 0 10px !important;
+    font-size: clamp(24px, 7vw, 30px) !important;
+    font-weight: 700 !important;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    color: #fff !important;
+  }
+
+  .lms-hero p, .hero p, #hero p, .jumbotron p {
+    max-width: 38ch;
+    margin: 0 0 20px !important;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .88) !important;
+  }
+
+  .lms-hero .btn, .hero .btn, #hero .btn, .jumbotron .btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 0 0 10px !important;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--uet-radius-md) !important;
+  }
+
+  .lms-hero .btn-primary, .hero .btn-primary, #hero .btn-primary, .jumbotron .btn-primary {
+    color: var(--uet-primary) !important;
+    background: #fff !important;
+    border: 0 !important;
+  }
+
+  .lms-hero .btn-secondary, .hero .btn-secondary, #hero .btn-secondary,
+  .lms-hero .btn-outline-light, .jumbotron .btn-secondary {
+    color: #fff !important;
+    background: transparent !important;
+    border: 1.5px solid rgba(255, 255, 255, .6) !important;
+  }
+
+  /* Odoo snippet banners keep their own images: only round & space them */
+  .s_cover, .s_banner, .s_carousel_wrapper {
+    margin: 0 var(--uet-gap) var(--uet-gap);
+    overflow: hidden;
+    border-radius: var(--uet-radius-xl);
+  }
+}

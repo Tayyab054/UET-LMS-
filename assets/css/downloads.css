@@ -1,0 +1,51 @@
+/* ==========================================================================
+   UET LMS — downloads.css
+   Tables that scroll sideways on small screens + download buttons.
+   ========================================================================== */
+
+.table-responsive,
+.o_portal_wrap .table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--uet-surface);
+  border: 1px solid var(--uet-border);
+  border-radius: var(--uet-radius-md);
+}
+
+.table { margin-bottom: 0; }
+
+.table th {
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--uet-muted);
+  background: var(--uet-primary-tint);
+}
+
+.table td, .table th {
+  padding: 12px 10px !important;
+  font-size: 13px !important;
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * { background-color: #f8fafc; }
+
+/* Download links / buttons */
+a .fa-download, .fa-download { color: var(--uet-primary) !important; }
+
+a.btn-secondary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 14px;
+  font-weight: 600 !important;
+  color: var(--uet-primary) !important;
+  background: var(--uet-primary-tint) !important;
+  border: 1px solid var(--uet-primary-press) !important;
+  border-radius: 999px !important;
+}
+.btn-secondary:active { background: var(--uet-primary-press) !important; }

@@ -1,0 +1,94 @@
+/* ==========================================================================
+   UET LMS — login.css
+   One card style for login, sign-up and reset-password forms.
+   (Merged from the old login.css + auth.css card rules — no more conflicts.)
+   ========================================================================== */
+
+body form.oe_login_form,
+body form[action*="/web/login"],
+body form.oe_signup_form,
+body form.oe_reset_password_form {
+  width: calc(100% - 32px);
+  max-width: 420px;
+  margin: 24px auto !important;
+  padding: 28px 22px !important;
+  background: var(--uet-surface) !important;
+  border: 1px solid rgba(0, 86, 179, .18) !important;
+  border-radius: var(--uet-radius-xl) !important;
+  box-shadow: 0 10px 28px rgba(0, 86, 179, .12) !important;
+}
+
+/* Labels */
+.oe_login_form .form-group label,
+.oe_login_form label,
+.oe_signup_form label,
+.oe_reset_password_form label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600 !important;
+  color: var(--uet-primary) !important;
+}
+
+/* Fields: 16px text prevents iOS zoom-on-focus */
+.oe_login_form .form-control,
+.oe_signup_form .form-control,
+.oe_reset_password_form .form-control {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-size: 16px !important;
+  color: var(--uet-text);
+  background: #fff;
+  border: 1.5px solid #cfd8e3 !important;
+  border-radius: var(--uet-radius-md) !important;
+  transition: border-color var(--uet-speed) var(--uet-ease),
+              box-shadow var(--uet-speed) var(--uet-ease);
+}
+
+.oe_login_form .form-control:focus,
+.oe_signup_form .form-control:focus,
+.oe_reset_password_form .form-control:focus {
+  border-color: var(--uet-primary) !important;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, .18) !important;
+}
+
+/* Primary action */
+.oe_login_form .btn-primary,
+.oe_signup_form .btn-primary,
+.oe_reset_password_form .btn-primary {
+  width: 100% !important;
+  min-height: 50px;
+  padding: 12px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  background-color: var(--uet-primary) !important;
+  border: 0 !important;
+  border-radius: var(--uet-radius-md) !important;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, .28);
+  transition: background-color var(--uet-speed) var(--uet-ease);
+}
+.oe_login_form .btn-primary:active,
+.oe_signup_form .btn-primary:active,
+.oe_reset_password_form .btn-primary:active {
+  background-color: var(--uet-primary-dark) !important;
+}
+
+/* Secondary links (reset password, sign up) */
+.oe_login_form .btn-link,
+.oe_login_form a:not(.btn) {
+  font-size: 14px;
+  color: var(--uet-primary);
+}
+
+@media (max-width: 360px) {
+  body form.oe_login_form,
+  body form[action*="/web/login"],
+  body form.oe_signup_form,
+  body form.oe_reset_password_form {
+    width: calc(100% - 20px);
+    padding: 22px 16px !important;
+    margin: 16px auto !important;
+  }
+}

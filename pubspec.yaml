@@ -1,0 +1,30 @@
+name: uet_lms
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_inappwebview: ^6.1.5
+  cupertino_icons: ^1.0.8
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+# ↓↓↓ ADD THIS SECTION HERE, AT THE TOP LEVEL ↓↓↓
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/css/      # the 9 CSS files: global, login, auth, home, dashboard,
+      # downloads, support, verifications, blog
+    - assets/js/       # lms_engine.js

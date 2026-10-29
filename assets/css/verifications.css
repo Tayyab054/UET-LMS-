@@ -1,0 +1,38 @@
+/* ==========================================================================
+   UET LMS — verifications.css
+   Verification forms and status buttons.
+   FIX: the old ".container form" selector styled EVERY form on the site
+   (search, login, filters). It is now limited to verification forms only.
+   ========================================================================== */
+
+form[action*="verify"],
+div[action*="verify"],
+.lms-verify-form {
+  padding: 20px !important;
+  background: var(--uet-surface) !important;
+  border: 1px solid var(--uet-border);
+  border-radius: var(--uet-radius-lg) !important;
+  box-shadow: var(--uet-shadow-soft) !important;
+}
+
+form[action*="verify"] .form-control {
+  min-height: 48px;
+  font-size: 16px;
+  border: 1.5px solid #cfd8e3;
+  border-radius: var(--uet-radius-md);
+}
+
+.btn-success, .btn-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 18px !important;
+  font-weight: 600 !important;
+  border-radius: var(--uet-radius-md) !important;
+}
+
+@media (max-width: 575.98px) {
+  form[action*="verify"] .btn-success,
+  form[action*="verify"] .btn-info { width: 100%; }
+}

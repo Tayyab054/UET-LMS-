@@ -1,0 +1,346 @@
+/* ==========================================================================
+   UET LMS — global.css
+   Tokens · base · navbar · footer.   Load this file FIRST.
+   Targets Odoo website (Bootstrap 4/5).  Mobile-first, touch-friendly.
+   ========================================================================== */
+
+/* 1. Design tokens (namespaced so they never clash with Odoo/Bootstrap) */
+:root {
+  --uet-primary:       #0056b3;
+  --uet-primary-dark:  #003d80;
+  --uet-primary-deep:  #002b5c;
+  --uet-primary-tint:  #eaf2fb;
+  --uet-primary-press: #d6e6f7;
+  --uet-accent:        #ff9800;
+  --uet-accent-dark:   #e68900;
+
+  --uet-surface: #ffffff;
+  --uet-bg:      #f4f6f9;
+  --uet-border:  #e3e9f0;
+  --uet-text:    #1f2937;
+  --uet-muted:   #5b6676;
+
+  --uet-radius-sm: 8px;
+  --uet-radius-md: 12px;
+  --uet-radius-lg: 16px;
+  --uet-radius-xl: 20px;
+
+  --uet-shadow-soft: 0 2px 10px rgba(15, 23, 42, .06);
+  --uet-shadow-lift: 0 8px 22px rgba(15, 23, 42, .10);
+  --uet-shadow-bar:  0 6px 20px rgba(0, 43, 92, .22), 0 1px 3px rgba(0, 43, 92, .12);
+  --uet-shadow-sheet:0 16px 36px rgba(15, 23, 42, .18), 0 2px 6px rgba(15, 23, 42, .06);
+
+  --uet-gap:   10px;     /* space around floating bar / cards */
+  --uet-nav-h: 58px;
+  --uet-ease:  cubic-bezier(.2, .8, .2, 1);
+  --uet-speed: 160ms;
+}
+
+/* 2. Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+html, body, #wrapwrap {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: var(--uet-bg) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif !important;
+  color: var(--uet-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+body { overflow-x: hidden; }
+
+a, button, .btn { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+img, video, iframe { max-width: 100%; }
+
+/* 3. Navbar — shared (all sizes) */
+header nav.navbar {
+  background-color: var(--uet-primary) !important;
+  box-shadow: var(--uet-shadow-bar) !important;
+}
+
+header nav.navbar .navbar-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: #fff !important;
+}
+
+header nav.navbar .navbar-brand::after {
+  content: "LMS UET";
+  padding-left: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .06em;
+  color: #fff;
+  white-space: nowrap;
+  border-left: 1px solid rgba(255, 255, 255, .35);
+}
+
+header nav.navbar .navbar-brand img {
+  width: auto;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+/* Sign-in pill (injected button) */
+.lms-navbar-signin-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 38px;
+  padding: 0 16px !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--uet-primary-deep) !important;
+  text-decoration: none !important;
+  background-color: var(--uet-accent) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, .35) !important;
+  transition: background-color var(--uet-speed) var(--uet-ease);
+}
+.lms-navbar-signin-btn:active { background-color: var(--uet-accent-dark) !important; }
+
+/* 4. Navbar — collapsed layout (phones & small tablets, < 992px) */
+@media (max-width: 991.98px) {
+
+  /* sticky wrapper keeps the gap clean while scrolling */
+  #wrapwrap > header {
+    position: sticky !important;
+    top: 0;
+    z-index: 1030;
+    padding: var(--uet-gap) max(var(--uet-gap), env(safe-area-inset-right))
+             0 max(var(--uet-gap), env(safe-area-inset-left)) !important;
+    background: var(--uet-bg) !important;
+    box-shadow: none !important;
+  }
+
+  header nav.navbar {
+    position: relative;
+    min-height: var(--uet-nav-h);
+    margin: 0 !important;
+    padding: 6px 8px 6px 14px !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+  }
+
+  header nav.navbar > .container,
+  header nav.navbar > .container-fluid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* row order: [logo + title] ........ [Sign in] [menu] */
+  header nav.navbar .navbar-brand {
+    order: 1;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0 auto 0 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+  .lms-navbar-signin-btn { order: 2; }
+  header nav.navbar .navbar-toggler { order: 3; }
+
+  /* Menu button: hamburger  →  up arrow when open */
+  header nav.navbar .navbar-toggler {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, .16) !important;
+    border: 0 !important;
+    border-radius: var(--uet-radius-md) !important;
+    box-shadow: none !important;
+    transition: background-color var(--uet-speed) var(--uet-ease);
+  }
+  header nav.navbar .navbar-toggler[aria-expanded="true"] {
+    background: rgba(255, 255, 255, .30) !important;
+  }
+  header nav.navbar .navbar-toggler-icon {
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16'/%3E%3C/svg%3E") !important;
+  }
+  header nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E") !important;
+  }
+
+  /* Dropdown sheet: separate rounded card under the bar */
+  header nav.navbar .navbar-collapse {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: calc(100vh - var(--uet-nav-h) - 48px);
+    max-height: calc(100dvh - var(--uet-nav-h) - 48px);
+    margin: 0 !important;
+    padding: 8px 0 12px !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--uet-surface) !important;
+    border: 1px solid var(--uet-border);
+    border-radius: 18px;
+    box-shadow: var(--uet-shadow-sheet);
+  }
+
+  header nav.navbar .navbar-nav {
+    margin: 0 !important;
+    padding: 0 8px !important;
+    list-style: none;
+  }
+  header nav.navbar .navbar-nav .nav-item { margin: 2px 0; }
+
+  header nav.navbar .navbar-collapse .nav-link {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 52px;
+    padding: 12px 14px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: var(--uet-text) !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border-radius: var(--uet-radius-md) !important;
+    transition: background-color var(--uet-speed) var(--uet-ease),
+                color var(--uet-speed) var(--uet-ease);
+  }
+
+  header nav.navbar .navbar-collapse .nav-link:not(.dropdown-toggle)::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    margin-left: 12px;
+    border-top: 2px solid #9aa5b4;
+    border-right: 2px solid #9aa5b4;
+    transform: rotate(45deg);
+  }
+
+  header nav.navbar .navbar-collapse .nav-link:active,
+  header nav.navbar .navbar-collapse .nav-link:focus {
+    color: var(--uet-primary) !important;
+    background: var(--uet-primary-press) !important;
+  }
+
+  header nav.navbar .navbar-collapse .nav-link.active,
+  header nav.navbar .navbar-collapse .nav-item.active > .nav-link {
+    font-weight: 600 !important;
+    color: var(--uet-primary) !important;
+    background: var(--uet-primary-tint) !important;
+  }
+
+  /* Sub-menus open inline instead of floating */
+  header nav.navbar .navbar-collapse .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: 100%;
+    margin: 4px 0 6px !important;
+    padding: 4px !important;
+    transform: none !important;
+    background: var(--uet-primary-tint) !important;
+    border: 0 !important;
+    border-radius: var(--uet-radius-md);
+    box-shadow: none !important;
+  }
+  header nav.navbar .navbar-collapse .dropdown-item {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 10px 14px;
+    white-space: normal;
+    border-radius: var(--uet-radius-sm);
+  }
+
+  /* Comfortable tap size for every button */
+  .btn:not(.btn-sm) { min-height: 44px; }
+}
+
+/* 5. Footer — floating rounded card on phones, rounded top on larger screens */
+footer#bottom, #wrapwrap > footer {
+  color: rgba(255, 255, 255, .8);
+  background-color: var(--uet-primary-dark) !important;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+}
+
+/* Odoo nests #footer inside <footer>; keep it transparent so it isn't doubled */
+#footer { background: transparent !important; border: 0 !important; padding: 24px 16px !important; }
+
+footer h3, footer h4, footer h5 { color: #fff !important; font-weight: 600; }
+footer a { color: rgba(255, 255, 255, .88) !important; text-decoration: none; }
+footer a:active { color: #fff !important; }
+footer .text-muted { color: rgba(255, 255, 255, .65) !important; }
+
+footer ul { margin: 0; padding: 0; list-style: none; }
+footer a:focus-visible { outline: 3px solid rgba(255, 255, 255, .6); outline-offset: 2px; border-radius: 6px; }
+
+.o_footer_copyright {
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom)) !important;
+  font-size: 13px;
+  color: rgba(255, 255, 255, .65) !important;
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+}
+
+@media (max-width: 767.98px) {
+  #wrapwrap > footer, footer#bottom {
+    margin: var(--uet-gap) !important;
+    border-radius: var(--uet-radius-xl) !important;
+    box-shadow: 0 10px 28px rgba(0, 43, 92, .25);
+    overflow: hidden;
+  }
+  footer [class*="col-"] { width: 100%; margin-bottom: 20px; }
+  footer a { display: inline-flex; align-items: center; min-height: 40px; }
+}
+
+/* 6. Small phones */
+@media (max-width: 360px) {
+  :root { --uet-gap: 8px; --uet-nav-h: 54px; }
+  header nav.navbar .navbar-brand img { max-height: 32px; }
+  header nav.navbar .navbar-brand::after { font-size: 15px; letter-spacing: .04em; padding-left: 8px; }
+  .lms-navbar-signin-btn { padding: 0 12px !important; font-size: 13px !important; }
+}
+@media (max-width: 320px) {
+  header nav.navbar .navbar-brand::after { display: none; }   /* keep Sign in + menu visible */
+}
+
+/* 7. Accessibility */
+header nav.navbar .navbar-toggler:focus-visible,
+header nav.navbar .navbar-brand:focus-visible,
+.lms-navbar-signin-btn:focus-visible,
+header nav.navbar .nav-link:focus-visible {
+  outline: 3px solid rgba(255, 152, 0, .8);
+  outline-offset: 2px;
+}
+header nav.navbar .navbar-collapse .nav-link:focus-visible { outline-offset: -3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

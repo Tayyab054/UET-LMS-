@@ -1,0 +1,57 @@
+/* ==========================================================================
+   UET LMS — blog.css
+   Readable blog list and article pages on small screens.
+   ========================================================================== */
+
+.o_wblog_post_title {
+  font-weight: 700 !important;
+  line-height: 1.25;
+  color: var(--uet-primary) !important;
+}
+
+#o_wblog_post_content,
+.o_wblog_post_content {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--uet-text);
+  overflow-wrap: anywhere;
+}
+
+#o_wblog_post_content img,
+.o_wblog_post_content img {
+  height: auto;
+  border-radius: var(--uet-radius-md);
+}
+
+#o_wblog_post_content h2, #o_wblog_post_content h3 { margin-top: 1.6em; color: var(--uet-text); }
+
+#o_wblog_post_content blockquote {
+  margin: 1.2em 0;
+  padding: 12px 16px;
+  color: var(--uet-muted);
+  background: var(--uet-primary-tint);
+  border-left: 4px solid var(--uet-primary);
+  border-radius: 0 var(--uet-radius-md) var(--uet-radius-md) 0;
+}
+
+.o_wblog_post_list article,
+article.o_wblog_post {
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: var(--uet-surface);
+  border: 1px solid var(--uet-border);
+  border-radius: var(--uet-radius-lg);
+  box-shadow: var(--uet-shadow-soft);
+}
+
+.o_wblog_post .badge,
+.o_wblog_post_tags .badge {
+  padding: 6px 10px;
+  color: var(--uet-primary);
+  background: var(--uet-primary-tint) !important;
+  border-radius: 999px;
+}
+
+@media (max-width: 575.98px) {
+  .o_wblog_post_title { font-size: 22px; }
+}

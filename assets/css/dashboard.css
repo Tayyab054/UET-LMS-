@@ -1,0 +1,61 @@
+/* ==========================================================================
+   UET LMS — dashboard.css
+   Portal page chrome: breadcrumb, cards, pagination, details.
+   (Home list cards live in home.css.)
+   ========================================================================== */
+
+.o_portal_wrap, .o_portal { padding-bottom: 24px; }
+
+.o_portal .breadcrumb,
+.o_portal_navbar .breadcrumb {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: var(--uet-surface);
+  border: 1px solid var(--uet-border);
+  border-radius: var(--uet-radius-md);
+  scrollbar-width: none;
+}
+.o_portal .breadcrumb::-webkit-scrollbar { display: none; }
+
+.o_portal .card,
+.o_portal_sidebar .card,
+.o_portal_my_details {
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: var(--uet-surface);
+  border: 1px solid var(--uet-border) !important;
+  border-radius: var(--uet-radius-lg) !important;
+  box-shadow: var(--uet-shadow-soft);
+}
+
+.o_portal .card-header {
+  font-weight: 600;
+  color: var(--uet-primary);
+  background: var(--uet-primary-tint);
+  border-bottom: 1px solid var(--uet-border);
+}
+
+.o_portal .pagination { flex-wrap: wrap; gap: 6px; justify-content: center; }
+.o_portal .page-link {
+  min-width: 42px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--uet-primary);
+  border-radius: var(--uet-radius-sm) !important;
+}
+.o_portal .page-item.active .page-link {
+  color: #fff;
+  background: var(--uet-primary);
+  border-color: var(--uet-primary);
+}
+
+/* Sidebar stacks under content on phones */
+@media (max-width: 767.98px) {
+  .o_portal_sidebar [class*="col-"] { width: 100%; max-width: 100%; }
+  .o_portal_my_home { padding-inline: 4px !important; }
+}

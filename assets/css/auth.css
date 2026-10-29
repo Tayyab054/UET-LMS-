@@ -1,0 +1,57 @@
+/* ==========================================================================
+   UET LMS — auth.css
+   Password field with show/hide eye, and auth messages.
+   (Card styling lives in login.css.)
+   ========================================================================== */
+
+/* Wrapper added by the eye-toggle script */
+.lms-pwd-group {
+  position: relative !important;
+  display: block !important;
+  width: 100%;
+}
+
+/* Only the password input needs room for the eye */
+.lms-pwd-group input.form-control {
+  width: 100%;
+  padding-right: 52px !important;
+}
+
+/* Eye button: 40px touch target, centred, never covers text */
+.lms-eye-btn {
+  position: absolute !important;
+  top: 50% !important;
+  right: 6px !important;
+  z-index: 5 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0;
+  font-size: 18px !important;
+  line-height: 1;
+  color: #64748b;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  transform: translateY(-50%) !important;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color var(--uet-speed) var(--uet-ease),
+              color var(--uet-speed) var(--uet-ease);
+}
+.lms-eye-btn:active { color: var(--uet-primary); background: var(--uet-primary-tint); }
+.lms-eye-btn:focus-visible { outline: 3px solid rgba(0, 86, 179, .4); outline-offset: 0; }
+
+/* Error / info messages above the form */
+.oe_login_form .alert,
+.oe_signup_form .alert,
+.oe_reset_password_form .alert {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 0;
+  border-radius: var(--uet-radius-md);
+}
